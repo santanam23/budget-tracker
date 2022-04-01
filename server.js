@@ -18,13 +18,14 @@ app.use(express.static("public"));
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true 
 });
 
 // Use this to log mongo queries being executed!
 mongoose.set('debug', true);
 // routes
-app.use(require("./routes"));
+app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
